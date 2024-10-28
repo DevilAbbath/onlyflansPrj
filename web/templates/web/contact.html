@@ -1,0 +1,24 @@
+{% extends 'web/layout/base.html' %}
+
+{% block content %}
+<h2>Contacto</h2>
+<form method="post" action="">
+    {% csrf_token %}
+    <div>
+        {{ form.customer_name.label_tag }}
+        {{ form.customer_name }}
+        {{ form.customer_name.errors }}
+    </div>
+    <div>
+        {{ form.customer_email.label_tag }}
+        {{ form.customer_email }}
+        {{ form.customer_email.errors }}
+    </div>
+    <div>
+        {{ form.message.label_tag }}
+        {{ form.message }}
+        {{ form.message.errors }}
+    </div>
+    <button type="submit">Enviar</button>
+</form>
+{% endblock %}

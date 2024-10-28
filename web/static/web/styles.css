@@ -1,28 +1,12 @@
-body {
-    font-family: Arial, sans-serif;
+.card-img-top {
+    height: 200px; /* Ajusta la altura según tus necesidades */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
 }
-.header {
-    background: red;
-    padding: 10px;
-    color: white;
-    text-align: center;
-}
-.navbar {
-    background: blue;
-    padding: 10px;
-    color: white;
-    text-align: center;
-}
-.footer {
-    background: green;
-    padding: 10px;
-    color: white;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-.content {
-    padding: 20px;
-    text-align: center;
+
+.card-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Número de líneas que quieres mostrar */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Agrega "..." al final si el texto es demasiado largo */
 }

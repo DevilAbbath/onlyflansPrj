@@ -8,6 +8,23 @@
 </div>
 
 <section class="py-5 bg-light">
-    <h2 class="fw-bolder">Indice</h2>
+    <h2 class="fw-bolder text-center">Mira Nuestro Catalogo gratuito</h2>
+
+    <div class="row">
+        {% for flan in flanes %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ flan.image_url }}" class="card-img-top" alt="{{ flan.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ flan.name }}</h5>
+                    <p class="card-text">{{ flan.description }}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No hay flanes disponibles.</p>
+        {% endfor %}
+    </div>
+
 </section>
 {% endblock %}
