@@ -1,28 +1,93 @@
-body {
-    font-family: Arial, sans-serif;
+@media (min-width: 992px) {
+    /* Estilos cuando la página tiene la clase solid-navbar */
+    body.solid-navbar #mainNav {
+        background-color: #AF8146 !important;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Estilos en la página principal (sin la clase solid-navbar) */
+    #mainNav {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    /* Resto de tus estilos */
+    #mainNav .navbar-brand {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Estilos cuando se aplica la clase navbar-shrink */
+    #mainNav.navbar-shrink {
+        background-color: #AF8146;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
 }
-.header {
-    background: red;
-    padding: 10px;
-    color: white;
-    text-align: center;
+
+footer {
+    background-color: #673106;
 }
-.navbar {
-    background: blue;
-    padding: 10px;
-    color: white;
-    text-align: center;
+
+header.masthead {
+    padding-top: 10rem;
+    padding-bottom: calc(10rem - 4.5rem);
+    background: linear-gradient(to bottom, rgba(92, 77, 66, 0.5) 0%, rgba(92, 77, 66, 0.8) 100%), url("./bkgimg.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
 }
-.footer {
-    background: green;
-    padding: 10px;
-    color: white;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+
+header.masthead h1,
+header.masthead .h1 {
+    font-size: 2.25rem;
 }
-.content {
-    padding: 20px;
-    text-align: center;
+
+@media (min-width: 992px) {
+    header.masthead {
+        height: 100vh;
+        min-height: 40rem;
+        padding-top: 4.5rem;
+        padding-bottom: 0;
+    }
+
+    header.masthead p {
+        font-size: 1.15rem;
+    }
+
+    header.masthead h1,
+    header.masthead .h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    header.masthead h1,
+    header.masthead .h1 {
+        font-size: 3.5rem;
+    }
+}
+
+
+
+.bg-custom {
+    background-color: #AF8146;
+}
+
+
+.card-img-top {
+    height: 200px;
+    /* Ajusta la altura según tus necesidades */
+    object-fit: cover;
+    /* Asegura que la imagen cubra el área sin distorsionarse */
+}
+
+.card-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    /* Número de líneas que quieres mostrar */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Agrega "..." al final si el texto es demasiado largo */
 }

@@ -1,0 +1,74 @@
+{% extends 'web/layout/base.html' %}
+{% block body_class %}solid-navbar{% endblock %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="container mt-2 py-5">
+<div class="container px-5">
+    <!-- Contact form -->
+    <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
+        <div class="text-center mb-5">
+            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+            <h1 class="fw-bolder">¿Quieres mas Informacion?</h1>
+            <p class="lead fw-normal text-muted mb-0">Estaremos encantado de atender sus dudas.</p>
+        </div>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6">
+                <form id="contactForm" method="POST" action="{% url 'contact' %}">
+                    {% csrf_token %}
+
+                    <!-- Name input -->
+                    <div class="form-floating mb-3">
+                        {{ form.customer_name|add_class:"form-control" }}
+                        {{ form.customer_name.label_tag }}
+                        <div class="invalid-feedback">{{ form.customer_name.errors }}</div>
+                    </div>
+
+                    <!-- Email address input -->
+                    <div class="form-floating mb-3">
+                        {{ form.customer_email|add_class:"form-control" }}
+                        {{ form.customer_email.label_tag }}
+                        <div class="invalid-feedback">{{ form.customer_email.errors }}</div>
+                    </div>
+
+                    <!-- Message input -->
+                    <div class="form-floating mb-3">
+                        {{ form.message|add_class:"form-control" }}
+                        {{ form.message.label_tag }}
+                        <div class="invalid-feedback">{{ form.message.errors }}</div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">Enviar Mensaje</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <img src="{% static 'web/success.png' %}" alt="Logo" style="max-width: 30%; height: auto;">
+                <h5 class="modal-title" id="successModalLabel">¡Hemos Recibido su Correo!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                Gracias por contactarte con OnlyFlans, te responderemos en breve.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'web/form.js' %}"></script>
+{% endblock %}
