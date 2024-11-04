@@ -58,6 +58,7 @@ Para configurar el proyecto en tu máquina local, sigue estos pasos:
 
 #### Capturas de Pantalla
 - **Requerimiento 1.1: Página de Índice**
+  
 ![Requerimiento 1.1 - Página de Índice](prints/Hito2/req2.1.png)
 
 - **Requerimiento 1.2: Página Acerca**
