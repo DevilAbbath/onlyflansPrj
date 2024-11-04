@@ -1,6 +1,8 @@
 {% extends 'web/layout/base.html' %}
+{% block body_class %}solid-navbar{% endblock %}
 
 {% block content %}
+<div class="container mt-2 py-5">
 <section class="py-5 bg-light">
     <h2 class="fw-bolder text-center">Bienvenido 'Nombre Cliente'</h2>
     <p class="text-center">Mira Nuestro Catalogo de suscriptor</p>
@@ -21,4 +23,5 @@
         {% endfor %}
     </div>
 </section>
+</div>
 {% endblock %}

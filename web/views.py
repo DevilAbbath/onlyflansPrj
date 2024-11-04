@@ -1,6 +1,8 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from .models import Flan
 from .form import ContactFormForm
+from .models import ContactForm
 
 
 
@@ -16,11 +18,16 @@ def welcome(request):
     return render(request, 'web/welcome.html', {'flanes': flanes_privados})
 
 def contact(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ContactFormForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('exito')
+            # Guardar los datos en el modelo
+            ContactForm.objects.create(**form.cleaned_data)
+            # Enviar una respuesta JSON para indicar éxito
+            return JsonResponse({"success": True})
+        else:
+            # Enviar errores en caso de validación incorrecta
+            return JsonResponse({"success": False, "errors": form.errors}, status=400)
     else:
         form = ContactFormForm()
-    return render(request, 'web/contact.html', {'form': form})
+    return render(request, "web/contact.html", {"form": form})

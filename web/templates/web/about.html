@@ -1,16 +1,32 @@
 {% extends 'web/layout/base.html' %}
+{% load static %}
+{% block body_class %}solid-navbar{% endblock %}
 
 {% block content %}
-<section class="page-section bg-light p-4" id="about">
+<div class="container mt-2 py-5">
+<section class="page-section bg-light mt-5 p-4" id="about">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-lg-8 text-center">
-                <h2 class="mt-0">We've got what you need!</h2>
+                <img src="{% static 'web/about.png' %}" alt="Logo" style="max-width: 30%; height: auto;">
+
+                <h2 class="mt-5 font-bold">¿Que es OnlyFlans?</h2>
                 <hr class="divider divider-light" />
-                <p class="mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
-                <a class="btn btn-outline-success btn-xl" href="#services">Get Started!</a>
+                <p class="mb-4">
+                    En OnlyFlans, somos apasionados por el arte de crear flanes que conquistan el paladar y el corazón. Nuestro objetivo es ofrecer una experiencia única, donde cada bocado de flan sea un momento de pura indulgencia y satisfacción.
+                </p>
+                <p class="mb-4">
+                    Desde el clásico flan de vainilla hasta nuestras creaciones innovadoras con sabores como café, chocolate y frutas tropicales, nuestros flanes son preparados con ingredientes frescos y de alta calidad, siguiendo recetas tradicionales y técnicas artesanales. Nos esforzamos por equilibrar la suavidad y el sabor en cada flan para que tengas una experiencia cremosa e inolvidable.
+                </p>
+                <p class="mb-4">
+                    Pero no solo somos una tienda de flanes. En [Nombre de tu Tienda] también encontrarás una selección de cafés gourmet que complementan a la perfección nuestras creaciones dulces. Ya sea que busques un lugar acogedor para disfrutar de un postre o un café para llevar, estamos aquí para brindarte un ambiente cálido y amigable donde el flan siempre tiene el protagonismo.
+                </p>
+                <p class="mb-4">
+                    ¡Visítanos y descubre por qué nuestro flan es el rey de los postres!    
+                </p>
             </div>
         </div>
     </div>
 </section>
+</div>
 {% endblock %}
