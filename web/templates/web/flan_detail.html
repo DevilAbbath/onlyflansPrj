@@ -1,0 +1,83 @@
+{% extends 'web/layout/base.html' %}
+{% block body_class %}solid-navbar{% endblock %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="container mt-4 py-5">
+
+    <section>
+        <div class="container px-5">
+            <div class="row gx-5 align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="p-5"><img class="img-fluid rounded-circle" src="{{flan.image_url}}" /></div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="p-5">
+                        <h2 class="display-4">{{ flan.name }}</h2>
+                        <p>{{ flan.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container my-5">
+        <h2 class="text-center">Comentarios</h2>
+        <div>
+            {% for comentary in comentaries %}
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+                        <div class="card-body p-4">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <p>{{ comentary.txt }}</p>
+
+                                    <div class="d-flex justify-content-between">
+                                        <div class="d-flex flex-row align-items-center">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
+                                                alt="avatar" width="25" height="25" />
+                                            <p class="small mb-0 ms-2">{{ comentary.user.username }}</p>
+                                        </div>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <p class="small text-muted mb-0">{{ comentary.created|date:"d M Y" }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>No hay comentarios aún. ¡Sé el primero en comentar!</p>
+            {% endfor %}
+        </div>
+
+        {% if user.is_authenticated %}
+        <div class="row mt-5 gx-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6">
+                <p class="text-center fw-bold">Añadre tu Comentario</p>
+                <form id="contactForm" method="POST" action="{% url 'flan_detail' flan_id=flan.id %}">
+                    {% csrf_token %}
+                    <!-- Message input -->
+                    <div class="form-floating mb-3 py-2">
+                        {{ form.txt|add_class:"form-control" }}
+                        {{ form.txt.label_tag }}
+                        <div class="invalid-feedback">{{ form.txt.errors }}</div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="d-grid">
+                        <button class="btn btn-primary" type="submit">Comentar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <p><a href="{% url 'login' %}">Inicia sesión</a> para dejar un comentario.</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

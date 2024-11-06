@@ -30,6 +30,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ flan.name }}</h5>
                         <p class="card-text">{{ flan.description }}</p>
+                        <a href="{% url 'flan_detail' flan.id %}" class="btn btn-primary">Ver detalles</a>
                     </div>
                 </div>
             </div>
